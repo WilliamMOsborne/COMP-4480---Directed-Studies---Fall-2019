@@ -1,0 +1,3 @@
+pattern = r".*\[(-*\d+\.\d+), (-*\d+\.\d+)\].*"
+
+thing.UTM = thing.UTM.str.replace(pattern, r"\1 \2")

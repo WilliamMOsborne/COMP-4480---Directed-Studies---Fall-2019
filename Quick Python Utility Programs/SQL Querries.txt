@@ -1,0 +1,23 @@
+SELECT vc_hundred_block, count(vc_hundred_block) AS Crime_Count
+	FROM vancouver_crime
+	WHERE vc_type LIKE 'Break%'
+	GROUP BY vc_hundred_block
+	ORDER BY Crime_Count DESC;
+
+
+
+
+
+SELECT VC.vc_year, VC.vc_month, VC.vc_day, VC.vc_hour, VC.vc_minute, VC.vc_hundred_block, VC.vc_neighbourhood, 
+	   DL.vd_sunrise_hour, DL.vd_sunrise_min, DL.vd_sunset_hour, DL.vd_sunset_min, DL.vd_hours_of_sun, 
+	   VWH.vwh_temp, VWH.vwh_visibility, VWH.vwh_weather,
+	   VWD.vwd_total_rain, VWD.vwd_total_snow, VWD.vwd_total_precip,	   
+	   VC.vc_type
+	FROM vancouver_crime VC
+	JOIN vancouver_daylight DL 
+		ON VC.vc_datetime::date = DL.vd_datetime	
+	JOIN vancouver_weather_hourly VWH 
+		ON VC.vc_datetime::date = VWH.vwh_datetime::date 
+		AND extract(hour from VC.vc_datetime) = extract(hour from VWH.vwh_datetime)
+	JOIN vancouver_weather_daily VWD 
+		ON VC.vc_datetime::date = VWD.vwd_date;

@@ -1,0 +1,9 @@
+CREATE TABLE vancouver_daylight (
+	vd_id SERIAL PRIMARY KEY,
+	vd_DateTime DATE NOT NULL,
+	vd_Sunrise_Hour NUMERIC NOT NULL,
+	vd_Sunrise_Min NUMERIC NOT NULL,
+	vd_Sunset_Hour NUMERIC NOT NULL,
+	vd_Sunset_Min NUMERIC NOT NULL,
+	vd_Hours_of_Sun NUMERIC NOT NULL
+)

@@ -1,0 +1,10 @@
+CREATE TABLE vancouver_street_lights (
+	vsl_id SERIAL PRIMARY KEY,
+	vsl_Block_Number Text NOT NULL,
+	vsl_Node_Number Numeric NOT NULL,
+	vsl_UTM_X Numeric NOT NULL,
+	vsl_UTM_Y Numeric NOT NULL,
+	vsl_Latitude Numeric NOT NULL,
+	vsl_Longitude Numeric NOT NULL,	
+	vsl_Neighbourhood TEXT
+);
